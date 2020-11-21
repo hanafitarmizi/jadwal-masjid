@@ -378,6 +378,10 @@ $result2=$stmt2->fetchAll();
             $(".alarm").trigger('load');
             $(".alarm").trigger('play');
           }
+          if (theCounter.getTime().time == 1) {
+            iqomah.setTime(<?php echo $result['iqomah']*60 ?>);
+          }
+
           if (theCounter.getTime().time == 0) {
             iqomah.start();
           }
