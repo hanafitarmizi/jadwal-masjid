@@ -9,6 +9,11 @@ $sql1="select * from running_text";
 $stmt1=$conn->prepare($sql1);
 $stmt1->execute();
 $result1=$stmt1->fetchAll();
+
+$sql2="select * from slider";
+$stmt2=$conn->prepare($sql2);
+$stmt2->execute();
+$result2=$stmt2->fetchAll();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,19 +115,20 @@ $result1=$stmt1->fetchAll();
 <section class="section-body">
  <div class="container-fluid">
   <div class="row" style="padding-top: 20px"> 
-    <div class="col-5" style="max-height: 300px; display: block; background-color:rgba(255,255,255,0.3)" >
+    <div class="col-5 d-flex justify-content-center" style="max-height: 300px; display: block; background-color:rgba(255,255,255,0.3)" >
 
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="img-fluid" style="height:300px" src="img/slider2.jpg" alt="First slide">
+          <?php $no=1 ?>
+          <?php foreach ($result2 as $row) : ?>
+          <div class="carousel-item <?php if($no==1) {
+            echo "active";
+          } ?>">
+            <img class="img-fluid" style="height:300px" src="<?php echo $row['gambar'] ?>" alt="First slide">
           </div>
-          <div class="carousel-item">
-            <img class="img-fluid" style="height:300px" src="img/slider3.jpg" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class=" img-fluid " style="height:300px"  src="img/slider3.jpg" alt="Third slide">
-          </div>
+          <?php $no++ ?>
+        <?php endforeach;?>
+          
         </div>
       </div>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2020 at 05:05 AM
+-- Generation Time: Nov 21, 2020 at 12:03 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -69,6 +69,26 @@ INSERT INTO `running_text` (`id`, `judul`, `isi`) VALUES
 (2, 'Saldo Kas', 'Imam Jum\'at Tanggal 12 November 2018 Ust Syakir Daulay\r\n           '),
 (3, 'Saldo Kas', 'Saldo Kas 12 Oktober 2018 Rp 12.505.657\r\n           ');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `slider`
+--
+
+CREATE TABLE `slider` (
+  `id` int(10) NOT NULL,
+  `gambar` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `slider`
+--
+
+INSERT INTO `slider` (`id`, `gambar`) VALUES
+(3, 'gambar/slider4.jpg'),
+(4, 'gambar/slider3.jpg'),
+(5, 'gambar/slider1.jpg');
+
 --
 -- Indexes for dumped tables
 --
@@ -86,6 +106,12 @@ ALTER TABLE `running_text`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -100,6 +126,12 @@ ALTER TABLE `masjid`
 --
 ALTER TABLE `running_text`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

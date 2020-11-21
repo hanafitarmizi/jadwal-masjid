@@ -10,6 +10,11 @@ $stmt1=$conn->prepare($sql1);
 $stmt1->execute();
 $result1=$stmt1->fetchAll();
 
+$sql2="select * from slider";
+$stmt2=$conn->prepare($sql2);
+$stmt2->execute();
+$result2=$stmt2->fetchAll();
+
 
 
 ?>
@@ -38,9 +43,13 @@ $result1=$stmt1->fetchAll();
 <body style="background-image: url('img/bg.jpg')">
 
  <div class="container">
+  <div class="text-center"> 
+  <h2 class="text-white text-center">Selamat Datang Pada Aplikasi Penjadwalan Masjid</h2>
+  <a href="jadwal.php" class="btn btn-info btn-lg "> Tampilkan Jadwal </a>
+</div>
   <div class="row mt-5">
     <div class="col-6">
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-header d-flex justify-content-between">
           <h5>Profil Masjid</h5>
           <button  class="btn btn-primary" data-toggle="modal" data-target="#perbarui-masjid">Perbarui Profil Masjid</a>
@@ -76,10 +85,8 @@ $result1=$stmt1->fetchAll();
             </tbody>
           </table>
         </div>
-      </div>  
-    </div>
-    <div class="col-6">
-      <div class="card">
+      </div>
+       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <h5>Petugas Jum'at</h5>
           <button  class="btn btn-primary" data-toggle="modal" data-target="#perbarui-petugas">Perbarui Petugas</button>
@@ -104,7 +111,65 @@ $result1=$stmt1->fetchAll();
             </tbody>
           </table>
         </div>
-      </div>  
+      </div>    
+    </div>
+    <div class="col-6">
+      <div class="card mb-2">
+        <div class="card-header d-flex justify-content-between">
+          <h5>Running Text</h5>
+          <a href="create-running.php" class="btn btn-primary"> Tambah Running Text</a>
+
+        </div>
+        <div class="card-body"> 
+          <table class="table table-striped ">
+            <thead> 
+              <tr>
+                <td>Judul</td>
+                <td width="60%">Isi</td>
+                <td>Aksi</td>
+              </tr>
+
+            </thead>
+            <tbody> 
+              <?php foreach ($result1 as $row) : ?>
+                <tr>
+
+                  <td><?php echo $row['judul']; ?></td>
+                  <td><?= $row['isi'] ?></td>
+                  <td><a class="btn btn-sm btn-warning" href="edit-running.php?id=<?= $row['id'] ?>">ubah</a>
+                    <a class="btn btn-sm btn-danger" href="delete-running.php?id=<?= $row['id'] ?>">hapus</a></td>
+                  </tr>
+                <?php endforeach; ?>
+                
+              </tbody>
+            </table>
+          </div>
+        </div> 
+          <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h5>Running Text</h5>
+          <button data-toggle="modal" data-target="#tambah-slider" class="btn btn-primary"> Tambah Slider</a>
+
+        </div>
+        <div class="card-body"> 
+          <table class="table table-striped ">
+           
+            <tbody> 
+              <?php foreach ($result2 as $row) : ?>
+                <tr>
+
+                  <td><img src="<?php echo $row['gambar']?>" style="height:150px;"></td>
+                 
+                  <td>
+                    <a class="btn btn-sm btn-danger" href="delete-slider.php?id=<?= $row['id'] ?>">hapus</a></td>
+                  </tr>
+                <?php endforeach; ?>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>   
+     
     </div>        
   </div>  
   <div class="modal fade" id="perbarui-petugas" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -139,6 +204,34 @@ $result1=$stmt1->fetchAll();
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary">Save changes</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+   <div class="modal fade" id="tambah-slider" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Tambah Slider</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <form action="insert-slider.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+
+              <label>Upload Gambar</label>
+              <input type="file" class="form-control" placeholder="khotib" name="slider">
+            </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
 
           </form>
         </div>
@@ -209,37 +302,7 @@ $result1=$stmt1->fetchAll();
 
   <div class="row mt-5">
     <div class="col-12">
-      <div class="card">
-        <div class="card-header d-flex justify-content-between">
-          <h5>Running Text</h5>
-          <a href="create-running.php" class="btn btn-primary"> Tambah Running Text</a>
-
-        </div>
-        <div class="card-body"> 
-          <table class="table table-striped ">
-            <thead> 
-              <tr>
-                <td>Judul</td>
-                <td width="60%">Isi</td>
-                <td>Aksi</td>
-              </tr>
-
-            </thead>
-            <tbody> 
-              <?php foreach ($result1 as $row) : ?>
-                <tr>
-
-                  <td><?php echo $row['judul']; ?></td>
-                  <td><?= $row['isi'] ?></td>
-                  <td><a class="btn btn-sm btn-warning" href="edit-running.php?id=<?= $row['id'] ?>">ubah</a>
-                    <a class="btn btn-sm btn-danger" href="delete-running.php?id=<?= $row['id'] ?>">hapus</a></td>
-                  </tr>
-                <?php endforeach; ?>
-                
-              </tbody>
-            </table>
-          </div>
-        </div>  
+      
       </div>     
     </div>  
 
