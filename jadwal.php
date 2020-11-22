@@ -27,7 +27,7 @@ $result2=$stmt2->fetchAll();
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;652&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif:wght@300&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="dist/css/flipclock.css">
   <link rel="stylesheet" href="dist/css/style.css">
 
@@ -44,7 +44,7 @@ $result2=$stmt2->fetchAll();
   .section-header {
     height:20%;
 
-    font-family: Bree Serif ,sans-serif;
+    font-family: Orbitron ,sans-serif;
   }
 
   .section-body {
@@ -98,14 +98,14 @@ $result2=$stmt2->fetchAll();
   <div class="container-fluid">
     <div class="row"> 
 
-     <div class="col-md-7 align-middle">
-       <h1><?php echo $result['nama'] ?></h1>
-       <p style="font-style: italic;"><?php echo $result['alamat'] ?></p>
+     <div class="col-md-8 align-middle">
+       <h1 style="font-size: 72px"><?php echo $result['nama'] ?></h1>
+       <p style="font-style: italic; font-size:12px"><?php echo $result['alamat'] ?></p>
 
      </div>
-     <div class="col-md-5 d-flex justify-content-end" style="padding-left: : 100px;">
+     <div class="col-md-4 d-flex justify-content-end">
 
-      <p id="clock"> </p>
+      <div class="d-flex justify-content-center" style="padding-left: 10px"  id="clock"></div>
 
 
     </div>
@@ -115,7 +115,7 @@ $result2=$stmt2->fetchAll();
 <section class="section-body">
  <div class="container-fluid">
   <div class="row" style="padding-top: 20px"> 
-    <div class="col-5 d-flex justify-content-center" style="max-height: 300px; display: block; background-color:rgba(255,255,255,0.3)" >
+    <div class="col-md-5 d-flex justify-content-center" style="max-height: 300px; display: block; background-color:rgba(255,255,255,0.3)" >
 
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -135,7 +135,7 @@ $result2=$stmt2->fetchAll();
 
 
     </div>
-    <div class="col-3">
+    <div class="col-md-3">
       <div class="text-center" style="background-color:rgba(255,255,255,0.3)">  
        <p class="center tanggal " style="font-size:24px;"></p>
        <p class="center hijriah " style="font-size:24px;"></p>
@@ -148,7 +148,7 @@ $result2=$stmt2->fetchAll();
     </div>
 
    </div>
-   <div class="col-4">
+   <div class="col-md-4">
 
 
 
@@ -159,10 +159,10 @@ $result2=$stmt2->fetchAll();
 
 
     </div>
-    <div class="text-center" style="background-color:rgba(255,255,255,0.3);padding-left: 0">
+    <div class="text-center" style="background-color:rgba(255,255,255,0.3)">
       <h5 class="center" style="margin-bottom: 30px"><b>Menuju Sholat Selanjutnya</b></h5>
 
-      <div class="d-flex justify-content-center"  id="itung"></div>
+      <div class="d-flex justify-content-center" style="margin-left: 0px"  id="itung"></div>
     </div>
   </div>  
 </div>  
