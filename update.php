@@ -2,7 +2,7 @@
 require "koneksi.php";
 $nama=$_POST['nama'];
 $alamat=$_POST['alamat'];
-$hp=$_POST['nohp'];
+$hp=$_POST['hp'];
 $lo=$_POST['lo'];
 $ln=$_POST['ln'];
 $iqomah=$_POST['iqomah'];

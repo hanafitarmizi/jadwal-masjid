@@ -1,5 +1,9 @@
 <?php 
 require "koneksi.php";
+session_start();
+if(empty($_SESSION['email'])){
+header('Location:login.php');
+}
 $sql="select * from masjid where (id=?)";
 $stmt=$conn->prepare($sql);
 $stmt->execute([1]);
@@ -45,7 +49,7 @@ $result2=$stmt2->fetchAll();
  <div class="container">
   <div class="text-center"> 
   <h2 class="text-white text-center">Selamat Datang Pada Aplikasi Penjadwalan Masjid</h2>
-  <a href="jadwal.php" class="btn btn-info btn-lg "> Tampilkan Jadwal </a>
+  <a href="jadwal2.php" class="btn btn-info btn-lg "> Tampilkan Jadwal </a>
 </div>
   <div class="row mt-5">
     <div class="col-6">
@@ -242,7 +246,7 @@ $result2=$stmt2->fetchAll();
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Perbarui Petugas</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle">Perbarui Masjid</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -264,7 +268,7 @@ $result2=$stmt2->fetchAll();
     <div class="col">
       <label>No Hp</label>
 
-      <input type="text" class="form-control" placeholder="nohp" value="<?php echo $result['hp'] ?>">
+      <input type="text" class="form-control" name="hp" placeholder="nohp" value="<?php echo $result['hp'] ?>">
     </div>
     <div class="col">
       <label>Iqomah</label>

@@ -42,29 +42,31 @@ $result2=$stmt2->fetchAll();
 
   }
   .section-header {
-    height:20%;
+    height:15%;
 
     font-family: Orbitron ,sans-serif;
   }
 
   .section-body {
-    height:55%;
+    height:62%;
 
 
   }
   .section-jadwal {
-   height:20%;
+   height:18%;
 
 
  }
  .section-running{
    height:5%;
+    margin-bottom: 0;
+   position: fixed;
 
  }
 
  .maghrib{
 
-   background-color: #085EA0
+   background-color: #095894
 
  }
  .shubuh{
@@ -85,22 +87,24 @@ $result2=$stmt2->fetchAll();
 
 }
 .ashar{
- background-color: #0A5D9E
+ background-color: #0A5D9E;
+ border-color: coral;
 
 }
+
 
 
 </style>
 </head>
 <body style="background-image: url('img/bg.jpg')">
-  <section class="section-header " style="background-color:rgba(255,255,255,0.3);
+  <section class="section-header " style="background-color:rgba(255,255,255,0.5);
   ">
   <div class="container-fluid">
     <div class="row"> 
 
      <div class="col-md-8 align-middle">
-       <h1 style="font-size: 72px"><?php echo $result['nama'] ?></h1>
-       <p style="font-style: italic; font-size:12px"><?php echo $result['alamat'] ?></p>
+       <h1 style="font-size: 72px;color: #00264d"><?php echo $result['nama'] ?></h1>
+       <p style="font-style: italic; font-size:12px;font-weight: 600"><?php echo $result['alamat'] ?></p>
 
      </div>
      <div class="col-md-4 d-flex justify-content-end">
@@ -113,9 +117,9 @@ $result2=$stmt2->fetchAll();
 </div>  
 </section>
 <section class="section-body">
- <div class="container-fluid">
-  <div class="row" style="padding-top: 20px"> 
-    <div class="col-md-5 d-flex justify-content-center" style="max-height: 300px; display: block; background-color:rgba(255,255,255,0.3)" >
+ <div class="container-fluid h-100">
+  <div class="row h-100 align-items-center" style="padding-top: 20px"> 
+    <div class="col-md-6 d-flex justify-content-center " style="display: block; background-color:rgba(255,255,255,0.5)" >
 
       <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -124,7 +128,7 @@ $result2=$stmt2->fetchAll();
           <div class="carousel-item <?php if($no==1) {
             echo "active";
           } ?>">
-            <img class="img-fluid" style="height:300px" src="<?php echo $row['gambar'] ?>" alt="First slide">
+            <img class="img-fluid" style="height: 350px" src="<?php echo $row['gambar'] ?>" alt="First slide">
           </div>
           <?php $no++ ?>
         <?php endforeach;?>
@@ -135,73 +139,74 @@ $result2=$stmt2->fetchAll();
 
 
     </div>
-    <div class="col-md-3">
-      <div class="text-center" style="background-color:rgba(255,255,255,0.3)">  
-       <p class="center tanggal " style="font-size:24px;"></p>
-       <p class="center hijriah " style="font-size:24px;"></p>
+   
+   <div class="col-md-6">
+
+     <div class="text-center rounded" style="background-color:rgba(255,255,255,0.5);padding-left: 0;padding-right: 0">
+     <div class="waktu-header" style="background-color: #4d4dff">
+       <p class="hari" style="font-size:32px;font-weight: 600; color: #00264d"></p>
+     </div>  
+       <p class="center tanggal " style="font-size:28px;font-weight: 600; color: #00264d" ></p>
+       <p class="center hijriah " style="font-size:28px;font-weight: 600; color: #00264d"></p>
      </div>
-     <div class="text-center" style="background-color:rgba(255,255,255,0.3)">
-      <h5 class="center mb-2"><b>Petugas Jum'at</b></h5>
-      <p><b>Khotib</b><br><?php echo $result['khotib'] ?></p>
-      <p><b>Imam</b><br><?php echo $result['imam'] ?></p>
-      <p><b>Mu'adzin</b><br><?php echo $result['muadzin'] ?></p>
-    </div>
-
-   </div>
-   <div class="col-md-4">
 
 
 
-    <div class="text-center" style="background-color:rgba(255,255,255,0.3)">
-      <h5 class="center mb-2"><b>IQOMAH</b></h5>
+    <div class="text-center border shadow rounded" style="background-color:rgba(255,255,255,0.5);padding-left: 0;padding-right: 0">
+       <div class="waktu-header" style="background-color: #4d4dff">
+       <p  style="font-size:32px;font-weight: 600; color: #00264d">Iqomah</p>
+     </div>
+      
       <div class="d-flex justify-content-center" id="iqomah"></div>
 
 
 
     </div>
-    <div class="text-center" style="background-color:rgba(255,255,255,0.3)">
-      <h5 class="center" style="margin-bottom: 30px"><b>Menuju Sholat Selanjutnya</b></h5>
-
-      <div class="d-flex justify-content-center" style="margin-left: 0px"  id="itung"></div>
-    </div>
+    
   </div>  
 </div>  
 </section>
 <section class="section-jadwal">
- <div class="container-fluid">
-  <div class="row "> 
-    <div class="col-2 text-center imsak">
-      <p style="font-size: 22px;"><b>Shubuh</b></p>
+ <div class="container-fluid h-100">
+  <div class="row h-100 "> 
+    <div class="col-2 border text-center imsak">
+      <p style="font-size: 22px;
+  margin-bottom: 0.2em;"><b>Shubuh</b></p>
       <p id="shubuh"> </p>
     </div>
-    <div class="col-2 text-center shubuh">
-     <p style="font-size: 22px;"><b>Syuruq</b></p>
+    <div class="col-2 text-center border shubuh">
+     <p style="font-size: 22px;
+  margin-bottom: 0.2em;"><b>Syuruq</b></p>
      <p id="fajar"> </p>
    </div>
-   <div class="col-2 text-center dzuhur">
+   <div class="col-2 border text-center dzuhur">
 
-    <p style="font-size: 22px;"><b>Dzuhur</b></p>
+    <p style="font-size: 22px;
+  margin-bottom: 0.2em;"><b>Dzuhur</b></p>
     <p id="dzuhur"> </p>
 
 
   </div>
-  <div class="col-2 text-center ashar">
+  <div class="col-2 border text-center ashar">
 
-    <p style="font-size: 22px;"><b>Ashar</b></p>
+    <p style="font-size: 22px;
+  margin-bottom: 0.2em;"><b>Ashar</b></p>
     <p id="ashar"> </p>
 
 
   </div>
-  <div class="col-2 text-center maghrib">
+  <div class="col-2 border text-center maghrib">
 
-    <p style="font-size: 22px;"><b>Maghrib</b></p>
+    <p style="font-size: 22px;
+  margin-bottom: 0.2em;"><b>Maghrib</b></p>
     <p id="maghrib"> </p>
 
 
   </div>
-  <div class="col-2 text-center isya">
+  <div class="col-2 border text-center isya">
 
-    <p style="font-size: 22px;"><b>Isya</b></p>
+   <p style="font-size: 22px;
+  margin-bottom: 0.2em;"><b>Isya</b></p>
     <p id="isya" > </p>
 
 
@@ -211,10 +216,10 @@ $result2=$stmt2->fetchAll();
 </div>  
 </section>
 <section class="section-running" style="background-color:rgba(0,0,0,0.3)">
- <div class="container-fluid">
-  <div class="row "> 
+ <div class="container-fluid h-100">
+  <div class="row h-100 "> 
     <marquee scrolldelay="200">
-      <p style="font-size: 20px;">
+      <p style="font-size: 32px;">
         <b style="color:white;">
           <?php foreach ($result1 as $row) : ?>
             <?php echo $row['isi'] ?>|
@@ -250,8 +255,10 @@ $result2=$stmt2->fetchAll();
   thisDay = myDays[thisDay];
   var yy = date.getYear();
   var year = (yy < 1000) ? yy + 1900 : yy;
+
+  $('.hari').html(thisDay);
   
-  $('.tanggal').html(thisDay +',' + ' ' + day + ' ' + month + ' ' + year);
+  $('.tanggal').html(day + ' ' + month + ' ' + year);
   var today = moment().format('YYYY-MM-DD'); 
 
   var hijri  = new Intl.DateTimeFormat('ar-TN-u-ca-islamic', {day: 'numeric', month: 'long',weekday: 'long',year : 'numeric'}).format(Date.now());
@@ -332,9 +339,6 @@ $result2=$stmt2->fetchAll();
     // mendapatkan jadwal sekarang
     
     var jadwalSekarang = getJadwal();
-    
-
-
     //hitung muncdur waktu iqomah
     var iqomah = $('#iqomah').FlipClock(<?php echo $result['iqomah']*60; ?>, {
       clockFace: 'MinuteCounter',
@@ -385,9 +389,6 @@ $result2=$stmt2->fetchAll();
           if (theCounter.getTime().time == 0) {
             iqomah.start();
           }
-
-          
-
 
         },
         stop: function(){

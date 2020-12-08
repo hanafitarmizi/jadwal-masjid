@@ -1,0 +1,141 @@
+//// -- LEVEL 1
+//// -- Tables and References
+
+// Creating tables
+Table agama  {
+  id char [pk] // auto-increment
+  agama varchar
+}
+
+Table provinsi {
+  id char [pk]
+  name varchar
+  
+ }
+ 
+Table kota {
+  id char [pk]
+  id_provinsi char [ref: > provinsi.id]
+  nama varchar
+}
+
+Table kecamatan {
+  id char [pk]
+  id_kota char [ref: > kota.id]
+  id_provinsi char [ref: > provinsi.id]
+  
+  nama varchar
+}
+
+Table desa {
+  id char [pk]
+  id_kecamatan char [ref: > kecamatan.id]
+  id_kota char [ref: > kota.id]
+  id_provinsi char [ref: > provinsi.id]
+  nama varchar
+}
+
+Table kewarganegaraan {
+  id char [pk]
+  nama varchar
+}
+
+Table golongan_darah {
+  id char [pk]
+  nama varchar
+}
+
+Table pendidikan {
+  id char [pk]
+  pendidikan varchar
+}
+
+Table pekerjaan {
+  id char [pk]
+  pekerjaan varchar
+}
+Table kelompok_umur {
+  id char [pk]
+  kelompok_umur varchar
+}
+
+Table status_kawin {
+  id char [pk]
+  status_kawin varchar
+}
+
+Table suku {
+  id char [pk]
+  suku varchar
+}
+
+Table bahasa 
+{
+  id char[pk]
+  bahasa varchar
+}
+
+Table pasien {
+  no_rm char[pk]
+  nama varchar
+  nama_panggilan varchar
+  nik varchar
+  no_bpjs varchar
+  no_jamkesda varchar
+  no_kk varchar
+  jenis_kelamin char
+  tempat_lahir varchar
+  tanggal_lahir datetime
+  alamat_ktp text
+  alamat_saat_ini text
+  rt char
+  rw char
+  id_desa char [ref: > desa.id]
+  id_kecamatan char [ref: > kecamatan.id]
+  id_kota char [ref: > kota.id]
+  id_provinsi char [ref: > provinsi.id]
+  id_kewarnegaraan char [ref: > kewarganegaraan.id]
+  id_pendidikan char [ref: > pendidikan.id]
+  no_telepon char
+  no_hp char
+  id_pekerjaan char [ref: > pekerjaan.id]
+  id_status_kawin char [ref: > status_kawin.id]
+  nama_ayah varchar
+  nama_ibu varchar
+  anak_ke char
+  jumlah_saudara char
+  id_golongan_darah char [ref: > golongan_darah.id]
+  id_suku char [ref: > suku.id]
+  id_bahasa char [ref: > bahasa.id]
+  nama_istri varchar
+  pj1 varchar
+  no_hp_pj1 varchar
+  alamat_pj1 text
+  hubungan_pj1 varchar
+  pj2 varchar
+  no_hp_pj2 varchar
+  alamat_pj2 text
+  hubungan_pj2 varchar
+  
+}
+
+Table instalasi {
+id char [pk]
+instalasi varchar
+}
+
+Table cara_bayar {
+id char [pk]
+cara_bayar varchar
+}
+
+Table cara_datang {
+id char [pk]
+cara_datang varchar
+}
+
+Table asal_pasien {
+id char [pk]
+asal_pasien varchar 
+}
+
